@@ -5,7 +5,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Router path='/' component={MainPage}/>
         {/* <Router /> */}
         {/* <Router /> */}
       </Routes>
