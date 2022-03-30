@@ -27,6 +27,7 @@ const ProfileCards = () => {
     entries: IntersectionObserverEntry[],
     io: IntersectionObserver
   ) => {
+    
     entries.forEach((entry) => {
       // target과 겹치면, 다음 profile을 가져와라. 
       if (entry.isIntersecting) {
