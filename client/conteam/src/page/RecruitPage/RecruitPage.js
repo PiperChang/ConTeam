@@ -1,47 +1,65 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from "react";
 
-<<<<<<< HEAD
-export default function RecruitPage() {
-  return (
-    <div>RecruitPage</div>
-  )
-}
-=======
 const ProfileCards = () => {
-	const profiles = [1, 2, 3, 4, 5]
-	const profileCards = profiles.map((profile, index) => (
-		<li key={index} className="bg-blue-500" style={{ height: "500px", width: "300px", color: 'blue', backgroundColor : "skyblue", marginBottom:"10px" }}>
-			{profile}
-		</li>
-	))
-	return (
-		<ul>
-			{profileCards}
-		</ul>
-	)
-}
+  const [profiles, setProfiles] = useState([]);
+
+  const observerRef = useRef();
+  const boxRef = useRef();
+
+  var cnt = 1;
+
+  const getProfiles = () => {
+    setProfiles(() => [...profiles, cnt]);
+    cnt = cnt + 1;
+  };
+
+  useEffect(() => {
+    getProfiles();
+  }, []);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(intersectionObserver);
+    boxRef.current && observerRef.current.observe(boxRef.current);
+  }, [profiles]);
+
+  const intersectionObserver = (
+    entries: IntersectionObserverEntry[],
+    io: IntersectionObserver
+  ) => {
+    entries.forEach((entry) => {
+      // target과 겹치면, 다음 profile을 가져와라. 
+      if (entry.isIntersecting) {
+        io.unobserve(entry.target);
+        getProfiles();
+      }
+    });
+  };
+
+  const profileCards = profiles.map((profile, index) => (
+    <li
+      key={index}
+      className="bg-red-500"
+      style={{
+        height: "1000px",
+        width: "300px",
+        backgroundColor: "skyblue",
+        marginBottom: "10px",
+      }}
+      ref={boxRef}
+    >
+      {profile}
+    </li>
+  ));
+  return <ul>{profileCards}</ul>;
+};
+
 
 export default function RecruitPage() {
-	const intersectionObserver = new IntersectionObserver((entries, observer) => {
-		const ioTarget = entries[0].target;
-		if (entries[0].isIntersecting) {
-			console.log(ioTarget);
-			ioTarget.unobserve($li)
+  
 
-			$li = $ul.appendChild
-			
-
-
-
-
-			
-		}
-	}, options)
-	return (
-		<div>
-			<ProfileCards />
-		</div>
-	)
+  return (
+    <div>
+      <ProfileCards />
+    </div>
+  );
 }
-
->>>>>>> 353c623ceb10f6775d10881fbfc2f71a45dac2f4
