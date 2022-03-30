@@ -63,5 +63,4 @@ export default function RecruitPage() {
       <ProfileCards />
     </div>
   );
->>>>>>> 60ad871494bd52d4a5b6e2d68d236b9ce89a4f6f
 }
