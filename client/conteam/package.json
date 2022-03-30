@@ -40,6 +40,6 @@
     ]
   },
   "devDependencies": {
-    "react-app-rewired": "^2.2.1"
+    "tailwindcss": "^3.0.23"
   }
 }
