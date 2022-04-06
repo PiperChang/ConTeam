@@ -1,12 +1,16 @@
 import React from 'react'
-import {BrowserRouter, Router, Routes, Link} from 'react-router-dom' 
+import {BrowserRouter, Route, Routes, Link} from 'react-router-dom' 
 import MainPage from './page/MainPage/MainPage'
+import RecruitPage from './page/RecruitPage/RecruitPage'
+
+
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Router /> */}
-        {/* <Router /> */}
+        <Route path="/" element={<MainPage/>} />
+        <Route path="/recruit" element={<RecruitPage/>} />
       </Routes>
     </BrowserRouter>
   )
