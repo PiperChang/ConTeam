@@ -1,13 +1,23 @@
 import React, { useState } from 'react'
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
+import axios from "axios"
 
-export default function FilterSection() {
+export default function FilterSection({profiles,setProfiles}) {
 
     const [showSearch, setShowSearch] = useState(false)
+    // 리스트에서, e.target.value의
+    const handleSearchRecruits = (e) => {
+        e.preventDefault()
+        const searchKeyword = e.target.value.toLowerCase()
+        // axios.post(
 
-    const handleSearchRecruits = () => {
-
+        // )
+        const searchedProfiles = profiles.filter(profile =>{
+            return profile.includes(searchKeyword)
+        }) 
+        setProfiles(searchedProfiles)
     }
+
     return (
         <div className='flex items-center relative mt-5'>
             <div className='p-1'><AiOutlineMenu /></div>
@@ -18,6 +28,7 @@ export default function FilterSection() {
                 <option> 출연자 </option>
                 <option> 편집자 </option>
             </select>
+            {/* 여기서 결정된 내용  */}
             <select className='p-1 border-r-2'>
                 <option value="none"> 경력 </option>
                 <option> 신입 </option>
@@ -25,10 +36,11 @@ export default function FilterSection() {
                 <option> ~ 4년 </option>
                 <option> ~ 8년 </option>
             </select>
+
             {/* 몇 년 경력인지가 중요한 요소인가? */}
             <select className='p-1 border-r-2'>
                 <option value="none"> 지역 </option>
-                <option> 서울 </option>
+                <option > 서울 </option>
                 <option> 경기·인천 </option>
                 <option> 대구·경북 </option>
                 <option> 부산·경남 </option>

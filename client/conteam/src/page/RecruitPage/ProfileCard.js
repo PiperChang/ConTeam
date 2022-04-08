@@ -2,7 +2,7 @@ import React from 'react'
 import { BiTime, BiPencil } from 'react-icons/bi'
 import { BsPencil } from 'react-icons/bs'
 import { RiRoadMapLine } from 'react-icons/ri'
-export default function ProfileCard({ index, boxRef }) {
+export default function ProfileCard({ index, boxRef, name}) {
     return (
         <li
             key={index}
@@ -12,6 +12,7 @@ export default function ProfileCard({ index, boxRef }) {
             <div className='h-3/5 overflow-hidden rounded-t-lg'>
                 <img className="object-cover " src="https://file.mk.co.kr/meet/neds/2020/07/image_readtop_2020_693310_15940817614269874.jpg" />
             </div>
+            {name}
             <div className="p-3 px-4">
                 <div className="flex mb-1 items-center">
                     <p className="mr-2 font-semibold text-lg">이주빈</p>

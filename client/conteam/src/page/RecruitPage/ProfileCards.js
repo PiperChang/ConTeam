@@ -4,8 +4,7 @@ import ProfileCard from "./ProfileCard";
 
 //media query 설정하기
 
-export default function ProfileCards() {
-  const [profiles, setProfiles] = useState([]);
+export default function ProfileCards({profiles,setProfiles}) {
 
   const observerRef = useRef();
   const boxRef = useRef();
@@ -18,8 +17,10 @@ export default function ProfileCards() {
 
   useEffect(() => {
     getProfiles();
+    console.log("처음만?");
   }, []);
 
+  //profiles 가 변경되면, ref를 새로 설정해라
   useEffect(() => {
     observerRef.current = new IntersectionObserver(intersectionObserver);
     boxRef.current && observerRef.current.observe(boxRef.current);
@@ -27,11 +28,9 @@ export default function ProfileCards() {
 
   const intersectionObserver = (
     entries, io
-    // entries: IntersectionObserverEntry[],
-    // io: IntersectionObserver
   ) => {
     entries.forEach((entry) => {
-      // target과 겹치면, 다음 profile을 가져와라. 
+    // target과 겹치면, 다음 profile을 가져와라. 
       if (entry.isIntersecting) {
         io.unobserve(entry.target);
         getProfiles();
@@ -40,7 +39,7 @@ export default function ProfileCards() {
   };
 
   const profileCards = profiles.map((profile, index) => (
-    <ProfileCard index={index} boxRef={boxRef}/>
+    <ProfileCard index={index} boxRef={boxRef} name={profile}/>
   ));
-  return <ul className="grid grid-cols-4">{profileCards}</ul>;
+  return <ul className="grid grid-cols-4 ">{profileCards}</ul>;
 };

@@ -6,13 +6,15 @@ import AdvertisementSection from "./AdvertisementSection";
 import FilterSection from "./FilterSection";
 
 export default function RecruitPage() {
+  const [profiles, setProfiles] = useState([]);
+
   return (
     <div className="flex flex-col my-auto items-center">
       <Header />
       <div>
         <AdvertisementSection/>
-        <FilterSection/>
-        <ProfileCards />
+        <FilterSection profiles={profiles} setProfiles={setProfiles} />
+        <ProfileCards profiles={profiles} setProfiles={setProfiles} />
       </div>
     </div>
   );
