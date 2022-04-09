@@ -12,7 +12,13 @@ const Modal = ({ showModal, closeModal }) => {
                                 <div className="flex flex-col w-[360px] py-11 px-14 justify-center items-center text-center flex-[1_0_auto]">
                                     <h2 className="text-xl">간편가입 / 로그인</h2>
                                     <div className="block mt-12">
-                                        <Link className="text-sm text-gray-700 border rounded-full" to="/"></Link>
+                                        <Link className="block w-full h-14 leading-[56px] rounded bg-[#4267B2] text-white font-medium" to="/">
+                                            <div className=""></div>
+                                            페이스북 계정으로 로그인 하기
+                                        </Link>
+                                        <Link className="" to="/">
+                                            <img alt="kakao_login_btn" src="kakao_login.png" />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
