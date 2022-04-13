@@ -5,7 +5,7 @@ import Modal from "../modals/Modal";
 export default function Header() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [showModal, setShowModal] = useState(false);
-
+    
     const updateScroll = () => {
         setScrollPosition(window.screenY || document.documentElement.scrollTop);
     }
