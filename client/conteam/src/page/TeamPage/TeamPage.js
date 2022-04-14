@@ -5,7 +5,7 @@ import ProfileCards from "./ProfileCards";
 import AdvertisementSection from "./AdvertisementSection";
 import FilterSection from "./FilterSection";
 
-export default function RecruitPage() {
+export default function TeamPage() {
   const [profiles, setProfiles] = useState([]);
 
   return (
@@ -19,3 +19,4 @@ export default function RecruitPage() {
     </div>
   );
 }
+

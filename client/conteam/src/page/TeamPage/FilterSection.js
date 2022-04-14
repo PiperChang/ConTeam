@@ -43,7 +43,7 @@ export default function FilterSection({profiles,setProfiles}) {
                 <option> 강원도 </option>
             </select>
             <div className='bg-red-100'>
-                new sextion
+                
             </div>
 
             <div className='absolute flex right-0 items-center'>
