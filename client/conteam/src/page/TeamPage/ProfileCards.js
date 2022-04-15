@@ -15,7 +15,6 @@ export default function ProfileCards({profiles,setProfiles}) {
     setProfiles(() => [...profiles, ...cnt]);
   };
 
-  
   useEffect(() => {
     getProfiles();
     console.log("처음만?");
