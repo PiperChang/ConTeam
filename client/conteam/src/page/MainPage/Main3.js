@@ -38,7 +38,7 @@ export default function Main3() {
     ]
     
     const mateList = mates.map((mate) => (
-            <div className="sm:px-3 sm:basis-full sm:max-w-full md:px-3.5 md:basis-1/2 md:max-w-[50%] lg:px-4 lg:basis-1/3 lg:max-w-[33.333333%]">
+            <div key={mate.no} className="sm:px-3 sm:basis-full sm:max-w-full md:px-3.5 md:basis-1/2 md:max-w-[50%] lg:px-4 lg:basis-1/3 lg:max-w-[33.333333%]">
                 <div className="w-full h-full">
                     <div className="h-80 border border-black rounded-lg">
                         <div className="h-1/3 border-b border-black text-center">
