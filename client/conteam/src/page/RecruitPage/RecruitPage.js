@@ -11,7 +11,7 @@ export default function RecruitPage() {
   return (
     <div className="flex flex-col my-auto items-center">
       <Header />
-      <div>
+      <div className="-z-10">
         <AdvertisementSection/>
         <FilterSection profiles={profiles} setProfiles={setProfiles} />
         <ProfileCards profiles={profiles} setProfiles={setProfiles} />
