@@ -14,7 +14,6 @@ export default function ProfileCards({profiles,setProfiles}) {
     var cnt = [Math.random(), Math.random(), Math.random(), Math.random(), Math.random()]
     setProfiles(() => [...profiles, ...cnt]);
   };
-
   
   useEffect(() => {
     getProfiles();

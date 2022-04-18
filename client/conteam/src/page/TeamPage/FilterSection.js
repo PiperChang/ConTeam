@@ -42,9 +42,6 @@ export default function FilterSection({profiles,setProfiles}) {
                 <option> 전라도 </option>
                 <option> 강원도 </option>
             </select>
-            <div className='bg-red-100'>
-                
-            </div>
 
             <div className='absolute flex right-0 items-center'>
                 {showSearch ?
