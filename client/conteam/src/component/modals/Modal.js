@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { KAKAO_AUTH_URL } from "../OAuth";
+
 const Modal = ({ showModal, closeModal }) => {
     return (
         <>
@@ -18,11 +20,11 @@ const Modal = ({ showModal, closeModal }) => {
                                             alt="facebook_icon" src="facebook_icon.svg" />
                                             페이스북 계정으로 로그인 하기
                                         </Link>
-                                        <Link className="block w-full h-14 mt-3 leading-[56px] rounded bg-[#FEE500] text-[#381F1F] font-medium" to="/">
+                                        <a className="block w-full h-14 mt-3 leading-[56px] rounded bg-[#FEE500] text-[#381F1F] font-medium" href={ KAKAO_AUTH_URL }>
                                             <img className="inline w-10 h-10 -mt-1"
                                             alt="kakaotalk_icon" src="kakaotalk_icon.svg" />
                                             카카오톡 계정으로 로그인 하기
-                                        </Link>
+                                        </a>
                                         <Link className="block w-full h-14 mt-3 leading-[56px] rounded bg-[#03C75A] text-white font-medium" to="/">
                                             <img className="inline w-10 h-10 -mt-1"
                                             alt="naver_icon" src="naver_icon.svg" />
