@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Main2() {
-    const teams = [
+    const [page, setPage] = useState(0);
+    
+    const clickHandler = (e) => {
+        setPage(e.target.id)
+    }
+
+    const allTeams = [
         {
             no: "1",
             name: "PLAN UG",
@@ -28,8 +34,43 @@ export default function Main2() {
             position: "개발자",
             text: "여행서비스/ 프로토타입 완성 단계/ 현재 구성원 5명/",
             date: "7시간전"
+        },
+        {
+            no: "4",
+            name: "플레이웰",
+            img: "이미지4",
+            title: "사용자 고유명사들을 바탕으로 취향저격 장소...",
+            position: "개발자",
+            text: "여행서비스/ 프로토타입 완성 단계/ 현재 구성원 5명/",
+            date: "7시간전"
+        },
+        {
+            no: "5",
+            name: "플레이웰",
+            img: "이미지5",
+            title: "사용자 고유명사들을 바탕으로 취향저격 장소...",
+            position: "개발자",
+            text: "여행서비스/ 프로토타입 완성 단계/ 현재 구성원 5명/",
+            date: "7시간전"
+        },
+        {
+            no: "6",
+            name: "플레이웰",
+            img: "이미지6",
+            title: "사용자 고유명사들을 바탕으로 취향저격 장소...",
+            position: "개발자",
+            text: "여행서비스/ 프로토타입 완성 단계/ 현재 구성원 5명/",
+            date: "7시간전"
         }
     ]
+    
+    const teams = allTeams.slice(3 * page, (page * 3) + 3)
+    
+    useEffect(() => {
+        console.log(page)
+        console.log(teams)
+    }, [page, allTeams])
+
     
     const teamList = teams.map((team) => (
             <div key={team.no} className="sm:px-3 sm:basis-full sm:max-w-full md:px-3.5 md:basis-1/2 md:max-w-[50%] lg:px-4 lg:basis-1/3 lg:max-w-[33.333333%]">
@@ -101,6 +142,10 @@ export default function Main2() {
                                     </div> */}
                                     {teamList}
                                 </div>
+                            </div>
+                            <div className="mt-4 flex justify-center space-x-2">
+                                <button id="0" className="w-5 h-5 border border-black rounded-full" onClick={clickHandler}></button>
+                                <button id="1" className="w-5 h-5 border border-black rounded-full" onClick={clickHandler}></button>
                             </div>
                         </div>
                     </div>
