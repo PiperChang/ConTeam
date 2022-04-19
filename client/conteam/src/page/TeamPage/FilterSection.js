@@ -17,7 +17,7 @@ export default function FilterSection({profiles,setProfiles}) {
         <div className='flex items-center relative mt-5'>
             <div className='p-1'><AiOutlineMenu /></div>
             <select className='p-1 border-r-2'>
-                <option value="none"> 직업 </option>
+                <option value="none"> 찾는 팀원 </option>
                 <option> 기획자 </option>
                 <option> 연출자 </option>
                 <option> 출연자 </option>
@@ -25,7 +25,7 @@ export default function FilterSection({profiles,setProfiles}) {
             </select>
             {/* 여기서 결정된 내용  */}
             <select className='p-1 border-r-2'>
-                <option value="none"> 경력 </option>
+                <option value="none"> 장르 </option>
                 <option> 신입 </option>
                 <option> ~ 2년 </option>
                 <option> ~ 4년 </option>

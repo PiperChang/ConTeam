@@ -41,5 +41,6 @@ export default function ProfileCards({profiles,setProfiles}) {
   const profileCards = profiles.map((profile, index) => (
     <ProfileCard index={index} boxRef={boxRef} name={profile}/>
   ));
-  return <ul className="grid grid-cols-4 ">{profileCards}</ul>;
+  return <ul className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4
+  ">{profileCards}</ul>;
 };

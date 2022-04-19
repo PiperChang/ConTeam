@@ -1,0 +1,8 @@
+.team-edit-form {
+    /* width: 50%; */
+    border: 1px red solid;
+    padding: 10px;
+}
+.team-edit-form label{
+    display: block;    
+}

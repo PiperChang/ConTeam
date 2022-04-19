@@ -22,9 +22,8 @@ export default function ProfileCard({ index, boxRef, name }) {
         >
             <div className='h-1/3  hover:bg-[rgba(1,1,1,0.5)] overflow-hidden rounded-t-lg bg-cover' onMouseEnter={handleMouseOverEvent} onMouseLeave={handleMouseLeaveEvent}>
                 <img className='duration-300' src='https://pds.joongang.co.kr//news/component/htmlphoto_mmdata/201711/27/61f78e51-2494-422e-a7e7-3f704466f6a6.jpg' />
-
-                <a className='duration-300 opacity-0 hover:bg-[rgba(1,1,1,0.5)]'>
-                    <button className='absolute top-7 left-[50%] -translate-x-1/2 bg-white rounded-full p-0.5 px-3 text-md font-semibold drop-shadow-md'>More View</button>
+                <a className='duration-300 opacity-0 '>
+                    <button className='absolute top-7 left-[50%] -translate-x-1/2 bg-white rounded-full p-0.5 px-3 text-md font-semibold drop-shadow-md '>More View</button>
                 </a>
             </div>
             <div className="p-3 px-4">
