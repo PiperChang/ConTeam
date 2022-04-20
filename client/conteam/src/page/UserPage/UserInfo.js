@@ -4,14 +4,15 @@ export default function UserInfo() {
     return (
         <div className="text-center">
             <div className="relative inline-block text-left w-[650px] mt-14 pb-9">
-                <span className="absolute inline-block text-left top-6 right-16 w-60 h-60 rounded-full overflow-hidden">
+                <span className="absolute inline-block text-left top-6 right-16 w-60 h-60 rounded-full overflow-hidden hover:opacity-70">
                     <label for="profile_photo" className="cursor-default text-left">
-                        <div className="absolute hover:z-10 top-0 text-center cursor-pointer duration-300 hover:bg-yellow-400 w-full h-60 rounded-[50%]">
+                        <div className="absolute opacity-0 hover:opacity-90  top-0 text-center cursor-pointer duration-300 w-full h-60 rounded-[50%]">
                             <span className="mt-24 ml-1 w-16 h-10 tracking-widest font-semibold text-center leading-10 inline-block text-xl text-white">EDIT</span>
                         </div>
                     </label>
                     <img src="profile.svg" />
                 </span>
+                <span className="absolute text-left right-[148px] top-[270px] text-red-600 text-sm font-bold cursor-pointer hover:border-b">프로필 삭제</span>
                 <div className="block text-left">
                     <div className="block text-left mb-5">
                         <span className="inline-block text-left w-24 leading-10 text-sm align-top">이름</span>
