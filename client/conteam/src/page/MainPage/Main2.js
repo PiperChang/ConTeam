@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function Main2() {
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState("0");
     
     const clickHandler = (e) => {
         setPage(e.target.id)
@@ -143,9 +143,9 @@ export default function Main2() {
                                     {teamList}
                                 </div>
                             </div>
-                            <div className="mt-4 flex justify-center space-x-2">
-                                <button id="0" className="w-5 h-5 border border-black rounded-full" onClick={clickHandler}></button>
-                                <button id="1" className="w-5 h-5 border border-black rounded-full" onClick={clickHandler}></button>
+                            <div className="mt-4 flex justify-center items-center space-x-2">
+                                <button id="0" className={page === "0" ? "w-5 h-5 border border-gray-600 bg-gray-600 rounded-full" :"w-4 h-4 border border-black rounded-full"} onClick={clickHandler}></button>
+                                <button id="1" className={page === "1" ? "w-5 h-5 border border-gray-600 bg-gray-600 rounded-full" :"w-4 h-4 border border-black rounded-full"} onClick={clickHandler}></button>
                             </div>
                         </div>
                     </div>
