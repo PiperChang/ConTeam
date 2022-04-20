@@ -24,7 +24,7 @@ export default function Header() {
     return (
         <div className=
         // "block sticky top-0 w-full bg-yellow-400 border-b border-gray-700 py-4"
-        {scrollPosition < 350 ? "block sticky transition ease-linear delay-300 top-0 w-full bg-yellow-400 border-b border-gray-700 py-4" : "block sticky transition ease-linear delay-300 top-0 w-full bg-white border-b border-gray-700 py-4"}>
+        {scrollPosition < 350 ? "block z-50 sticky transition ease-linear delay-300 top-0 w-full bg-yellow-400 border-b border-gray-700 py-4" : "block z-50 sticky transition ease-linear delay-300 top-0 w-full bg-white border-b border-gray-700 py-4"}>
             <div className="flex justify-center items-center md:justify-center">
                 <div className="max-w-7xl min-w-0 w-full lg:mx-16 mx-6">
                     <div className="flex flex-row">
