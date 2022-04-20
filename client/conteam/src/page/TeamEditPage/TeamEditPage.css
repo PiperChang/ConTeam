@@ -1,11 +1,18 @@
-.team-edit-form {
-    border: 1px red solid;
+
+.team-edit-form::after {
+    content: "";
+    clear: both;
+    display: block;
 }
 .team-edit-form label{
     display: block;    
-    padding-top: 2px;
+    padding-top: 5px;
 }
 .team-edit-form input{
-    border: 1px gainsboro solid;
+    /* border: 1px gainsboro solid; */
     box-shadow: 0.5px 0.5px  gray;
+}
+
+.ck-editor__main .ck-editor__editable{
+    min-height: 300px;
 }
