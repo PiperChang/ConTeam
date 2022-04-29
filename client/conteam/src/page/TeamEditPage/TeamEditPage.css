@@ -4,9 +4,10 @@
     clear: both;
     display: block;
 }
+
 .team-edit-form label{
     display: block;    
-    padding-top: 5px;
+    padding: 5px 0;
 }
 .team-edit-form input{
     /* border: 1px gainsboro solid; */
