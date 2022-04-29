@@ -1,22 +1,37 @@
-import React, { useRef,useState } from 'react'
+import React, { Children, useRef, useState } from 'react'
 import Header from '../../component/header/Header'
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { useNavigate } from 'react-router-dom'
-import purify from 'dompurify'
+import { useNavigate } from "react-router-dom";
+import parse, { domToReact } from 'html-react-parser'
 import './TeamEditPage.css'
 
 export default function TeamEditPage() {
-  const editorRef = useRef();
   const navigate = useNavigate()
 
-  const [detailDescription, setDetailDescription] = useState({})
-  const handleSaveTeamData = (e) => {
+  const editorRef = useRef();
+  const [detailDescription, setDetailDescription] = useState("")
+  const handleSaveTeamData = async (e) => {
     e.preventDefault()
-    //form의 액션에 얘도 넘길 수가 있나?
-    setDetailDescription(editorRef.current.editor.getData())
-    // DOMPurify 통해서 Sanitize 하기.
-    navigate
+    await setDetailDescription(editorRef.current.editor.getData())
+  }
+  
+  //parse option
+  const parseOption = {
+    replace: (domNode) => {
+      if (domNode.name == 'oembed') {
+        const url = domNode.attribs.url.split(/[/,?,=]/).slice(-1)[0]
+        console.log("d",url);
+        return React.createElement(
+          'iframe', {
+            src : `https://youtube.com/embed/${url}`,
+            width : "300",
+            height : "300"
+          },
+          domToReact(domNode.children ,parseOption)
+        ) ;
+      }
+    }
   }
 
   return (
@@ -25,10 +40,10 @@ export default function TeamEditPage() {
       {/* 각 태그마다 줄바꿈 + */}
       <div className='max-w-7xl min-w-0 w-full m-auto '>
         <form className='block team-edit-form p-7 shadow-md' action='/' method='get'  onSubmit={handleSaveTeamData}>
-          <h3 className='font-semibold text-lg py-3'>1. 팀 소개</h3>
+          <h3 className='font-semibold text-lg py-3'>1. 팀 소dfa개</h3>
           <hr></hr>
           <label for="team_name">팀명</label>
-          <input type="text" id='team_name' name='team_name'/>
+          <input type="text" id='team_name' name='team_name' />
           <label for="short_description">프로젝트 한 줄 설명</label>
           <input type="text" id='short_description' name='short_description' placeholder='ex) ' />
           <label for="category">컨텐츠 분야</label>
@@ -53,18 +68,19 @@ export default function TeamEditPage() {
           <label for="opening_position">모집 인원</label>
           <input type="number" id='opening_position' name='opening_position' min={1} />
 
-          <label for="opening_position">컨텐츠 상세 소개</label>          
+          <label for="opening_position">컨텐츠 상세 소개</label>
+         
           <CKEditor
             ref={editorRef}
             editor={ClassicEditor}
             data=""
           />
-          <input type="hidden" name='detailDescription' value={detailDescription}/>
-            {/* <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 ml-3 float-right'>다음단계</button> */}
-            <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 float-right'>저장하기</button>
+          <input type="hidden" name='detailDescription' value={detailDescription} />
+          {/* <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 ml-3 float-right'>다음단계</button> */}
+          <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 float-right' onClick={handleSaveTeamData}>저장하기</button>
         </form>
-          <div dangerouslySetInnerHTML={{__html:detailDescription}}>
-          </div>
+        {detailDescription}
+        {parse(detailDescription, parseOption)}
       </div>
     </div>
   )
