@@ -4,7 +4,6 @@ import { CKEditor } from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useNavigate } from "react-router-dom";
 
-// import DOMPurify from 'dompurify'
 import parse, { domToReact } from 'html-react-parser'
 import './TeamEditPage.css'
 
@@ -16,9 +15,9 @@ export default function TeamEditPage() {
   const handleSaveTeamData = (e) => {
     e.preventDefault()
     setDetailDescription(editorRef.current.editor.getData())
-    navigate('/team-edit-preview', {state:{data: detailDescription }})
+    // navigate('/team-edit-preview', {state:{data: detailDescription }})
   }
-
+  
   //parse option
   const parseOption = {
     replace: (domNode) => {
@@ -82,6 +81,7 @@ export default function TeamEditPage() {
           {/* <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 ml-3 float-right'>다음단계</button> */}
           <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 float-right' onClick={handleSaveTeamData}>저장하기</button>
         </form>
+        {detailDescription}
         {parse(detailDescription, parseOption)}
       </div>
     </div>
