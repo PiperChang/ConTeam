@@ -5,7 +5,7 @@ import ProfileCards from "./ProfileCards";
 import AdvertisementSection from "./AdvertisementSection";
 import FilterSection from "./FilterSection";
 
-export default function TeamPage() {
+export default function TeamListPage() {
   const [profiles, setProfiles] = useState([]);
 
   return (
@@ -20,3 +20,4 @@ export default function TeamPage() {
   );
 }
 
+// db에 저장이 안되니깐, 

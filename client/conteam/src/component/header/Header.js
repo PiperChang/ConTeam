@@ -42,7 +42,7 @@ export default function Header() {
                                         <Link className="text-sm text-black font-normal" to="/recruit">팀원 찾기</Link>
                                     </span>
                                     <span>
-                                        <Link className="text-sm text-black font-normal" to="/team">기획서 찾기</Link>
+                                        <Link className="text-sm text-black font-normal" to="/team-list">기획서 찾기</Link>
                                     </span>
                                     <span>
                                         <Link className="text-sm text-black font-normal" to="/">커뮤니티</Link>

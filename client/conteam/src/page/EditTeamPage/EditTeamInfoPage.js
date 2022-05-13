@@ -4,9 +4,9 @@ import { CKEditor } from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useNavigate } from "react-router-dom";
 import parse, { domToReact } from 'html-react-parser'
-import './TeamEditPage.css'
+import './EditTeamInfoPage.css'
 
-export default function TeamEditPage() {
+export default function EditTeamInfoPage() {
   const navigate = useNavigate()
   const editorRef = useRef();
   const [description, setDescription] = useState({})
@@ -51,9 +51,6 @@ export default function TeamEditPage() {
           </select>
           <label for="teammates" >현재 팀원</label>
           <input type="number" onChange={handleChange} id='teammates' name='teammates' min={1} className='w-10' />
-          {/* 팀원 아이디 치면, 해당 팀원 프로필
-          현재 팀원 수 (@아이디+ 역할,@아이디+ 역할,@아이디+ 역할) */}
-          {/* 서비스 단계 ( 기획, 팀 모집중, 제작 중 ) */}
 
           <label for="due_date">모집 마감일</label>
           <input type="date" id='due_date' onChange={handleChange} name='due_date' />
@@ -71,6 +68,7 @@ export default function TeamEditPage() {
             editor={ClassicEditor}
             data=""
           />
+
           {/* <input type="hidden" name='detailDescription' value={} /> */}
           <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 float-right' >저장하기</button>
         </form>
@@ -78,3 +76,4 @@ export default function TeamEditPage() {
     </div>
   )
 }
+

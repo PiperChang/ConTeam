@@ -3,7 +3,7 @@ import { BiTime, BiPencil } from 'react-icons/bi'
 import { BsPencil } from 'react-icons/bs'
 import { RiRoadMapLine } from 'react-icons/ri'
 import { AiOutlineTeam } from 'react-icons/ai'
-import "./TeamPage.css"
+import "./TeamListPage.css"
 
 function ProfileCard({ index, boxRef, name }) {
     const handleMouseOverEvent = (e) => {
@@ -30,7 +30,6 @@ function ProfileCard({ index, boxRef, name }) {
                 <div className="flex mb-1 items-center">
                     <p className="mr-2 font-semibold ">컨텐츠명</p>
                 </div>
-
                 <div className="flex items-center">
                     {/* 경력, 위치 */}
                     <AiOutlineTeam className='mr-1' /><p className='mr-3'>5명</p>
@@ -46,9 +45,6 @@ function ProfileCard({ index, boxRef, name }) {
             </div>
         </li>)
 }
-
-
-//media query 설정하기
 
 export default function ProfileCards({profiles,setProfiles}) {
 

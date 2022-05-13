@@ -12,7 +12,6 @@ export default function FilterSection({profiles,setProfiles}) {
         // setProfiles(searchedProfiles)
     }
 
-
     return (
         <div className='flex items-center relative mt-5'>
             <div className='p-1'><AiOutlineMenu /></div>

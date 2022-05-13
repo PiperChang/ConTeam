@@ -2,12 +2,13 @@ import React from 'react'
 import Header from '../../component/header/Header'
 import {useLocation} from 'react-router-dom' 
 import parse, { domToReact } from 'html-react-parser'
-import './TeamEditPage.css'
+import './EditTeamInfoPage.css'
 
 export default function PreviewPage() {
   const location = useLocation()
   const data = location.state.data
   console.log(data.description);
+
   //parse option
   const parseOption = {
     replace: (domNode) => {
@@ -39,4 +40,3 @@ export default function PreviewPage() {
     </div>
   )
 }
-// 모집 분야
