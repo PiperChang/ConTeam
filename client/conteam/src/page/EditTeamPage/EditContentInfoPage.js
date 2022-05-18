@@ -1,23 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../component/header/Header'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 export default function EditContentInfoPage() {
 
+    // imgList api로 가져와야함.
     const imglist = [1,2,3,4,5]
+    const [imgNum, setImgNum] = useState(0)
+
     
+    
+
     return (
         <div>
             <Header />
             {/* 각 태그마다 줄바꿈 + */}
             <div className='max-w-7xl min-w-0 w-full m-auto '>
                 <h2 className='font-bold text-2xl py-3 border-b-[2px]'>컨텐츠 소개</h2>
-                <div className='flex'>
-                    <div className='w-1/2'>
-                        
-                        {/* 최대 5장의 이미지 */}
+                <div className='flex py-10'>
+                    <div className='w-[30vw] px-10 '>
                         {/* <button onClick={changeImage}></button> */}
-                        <div className='flex'>
-                            {imglist.map((img)=> (
-                                <div className='p-2'> {img} </div>
+                        <div className = 'flex border items-center justify-between flex-auto' style={{height:"25vw", verticalAlign:"middle"}}  >
+                            <AiOutlineLeft onClick={()=>{setImgNum((imgNum-1)%5)}} />
+                                {imglist[`${imgNum}`]}
+                            <AiOutlineRight onClick={()=>{setImgNum((imgNum+1)%5)}} />
+                        </div>
+                        <div className='flex mt-3'>
+                            {imglist.map((img, idx)=> (
+                                <div className='border' style={{width : "100%", height:"80px"}} onClick={() => {setImgNum(idx)}}> {img} </div>
                             ))}
                         </div>
                     </div>
