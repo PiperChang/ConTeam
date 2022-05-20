@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import Header from '../../component/header/Header'
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from 'react-icons/ai'
+
 export default function EditContentInfoPage() {
 
     // imgList api로 가져와야함.
-    const imglist = [1,2,3,4,5]
+    const imglist = [1, 2, 3, 4]
     const [imgNum, setImgNum] = useState(0)
 
-    
-    
+    // onClick()
+
+
 
     return (
         <div>
@@ -19,19 +21,22 @@ export default function EditContentInfoPage() {
                 <div className='flex py-10'>
                     <div className='w-[30vw] px-10 '>
                         {/* <button onClick={changeImage}></button> */}
-                        <div className = 'flex border items-center justify-between flex-auto' style={{height:"25vw", verticalAlign:"middle"}}  >
-                            <AiOutlineLeft onClick={()=>{setImgNum((imgNum-1)%5)}} />
-                                {imglist[`${imgNum}`]}
-                            <AiOutlineRight onClick={()=>{setImgNum((imgNum+1)%5)}} />
+                        <div className='flex border items-center relative justify-between flex-auto' style={{ height: "25vw", verticalAlign: "middle" }}  >
+                            <button className='absolute right-px top-px'><AiOutlineClose/></button>
+                            <AiOutlineLeft onClick={() => { setImgNum((imgNum - 1) % 4) }} />
+                            {imglist[`${imgNum}`]}
+                            <AiOutlineRight onClick={() => { setImgNum((imgNum + 1) % 4) }} />
                         </div>
                         <div className='flex mt-3'>
-                            {imglist.map((img, idx)=> (
-                                <div className='border' style={{width : "100%", height:"80px"}} onClick={() => {setImgNum(idx)}}> {img} </div>
+                            {imglist.map((img, idx) => (
+                                <div className='border' style={{ width: "100%", height: "80px" }} onClick={() => { setImgNum(idx) }}> {img} </div>
                             ))}
                         </div>
                     </div>
-                    <h2>Title</h2>
-                    <h2>프로젝트 설명</h2>
+                    <div>
+                        <h1 className='font-bold text-3xl'>Title</h1>
+                        <p>프로젝트 설명</p>
+                    </div>
                 </div>
 
 
@@ -66,8 +71,8 @@ export default function EditContentInfoPage() {
                         data=""
                     /> */}
 
-                    {/* <input type="hidden" name='detailDescription' value={} /> */}
-                    {/* <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 float-right' >저장하기</button>
+                {/* <input type="hidden" name='detailDescription' value={} /> */}
+                {/* <button type='submit' className='p-3 rounded-lg text-white bg-gray-900 mt-3 float-right' >저장하기</button>
                 </form> */}
             </div>
         </div>
