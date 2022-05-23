@@ -5,7 +5,7 @@ import ProfileCards from "./ProfileCards";
 import AdvertisementSection from "./AdvertisementSection";
 import FilterSection from "./FilterSection";
 
-export default function RecruitPage() {
+export default function TeamListPage() {
   const [profiles, setProfiles] = useState([]);
 
   return (
@@ -19,3 +19,5 @@ export default function RecruitPage() {
     </div>
   );
 }
+
+// db에 저장이 안되니깐, 
