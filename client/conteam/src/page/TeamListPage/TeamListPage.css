@@ -1,0 +1,4 @@
+.hovered-thumbnail {
+    transform: scale(1.1);
+    filter: brightness(60%);
+}
