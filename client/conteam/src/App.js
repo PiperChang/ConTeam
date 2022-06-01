@@ -5,8 +5,8 @@ import RecruitPage from './page/RecruitPage/RecruitPage'
 
 import TeamListPage from './page/TeamListPage/TeamListPage'
 import EditTeamInfoPage from './page/EditTeamPage/EditTeamInfoPage'
-import PreviewPage from './page/EditTeamPage/PreviewPage'
 import EditContentInfoPage from './page/EditTeamPage/EditContentInfoPage'
+import PreviewPage from './page/EditTeamPage/PreviewPage'
 
 export default function App() {
   return (

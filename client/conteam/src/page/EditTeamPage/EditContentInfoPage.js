@@ -3,14 +3,12 @@ import Header from '../../component/header/Header'
 import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from 'react-icons/ai'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
-
+import ProfileCard from '../RecruitPage/ProfileCard';
 export default function EditContentInfoPage() {
-
     // imgList api로 가져와야함.
     const imglist = [1, 2, 3, 4, 5]
     const [imgNum, setImgNum] = useState(0)
     const editorRef = useRef();
-    // onClick()
     
     const handleDeletePic = () => {
         imglist.splice(imgNum, 1)
@@ -22,10 +20,15 @@ export default function EditContentInfoPage() {
         desc:"",
         imgs:[]
     })
-
-    const saveContentData =() =>{
-        
-        setContentData()
+    
+    const handleChange = (e) => {
+        const newContentData = contentData
+        newContentData[e.target.name] = e.target.value
+        setContentData(contentData)
+    }
+    
+    const saveContentData =(e) =>{
+        // axios.~ 보내기
     }
     return (
         <div>
@@ -35,8 +38,8 @@ export default function EditContentInfoPage() {
                 <h2 className='font-bold text-2xl py-3 border-b-[2px] mb-5'>컨텐츠 소개</h2>
                 <div className='flex justify-center'>
                     {/* Images */}
-                    <div className='mr-10 w-[30vw]'>
-                        <div className='flex border items-center relative justify-between flex-auto' style={{ width: "30vw", height: "30vw" }} >
+                    <div className='mr-10'>
+                        <div className='flex border items-center relative justify-between flex-auto' style={{ width: "30rem", height: "30rem" }} >
                             <button className='absolute right-px top-px'><AiOutlineClose /></button>
                             <AiOutlineLeft onClick={() => { setImgNum((imgNum - 1) % 4) }} />
                             <img></img>
@@ -44,30 +47,31 @@ export default function EditContentInfoPage() {
                         </div>
                         <div className='flex mt-3'>
                             {imglist.map((img, idx) => (
-                                <div className='border w-[6vw] h-[6vw]' onClick={() => { setImgNum(idx) }} style={{ width: "6vw", height: "6vw" }}> {img} </div>
+                                <div className='border w-[6rem] h-[6rem]' onClick={() => { setImgNum(idx) }}> {img} </div>
                             ))}
                         </div>
                     </div>
                     {/* INPUT */}
                     <div className='ml-5 w-[50vw]'>
-                        <input className='font-bold text-3xl px-2' placeholder='Title'></input>
+                        <input name= 'title' className='font-bold text-3xl px-2' placeholder='Title' onChange={handleChange}></input>
                         <br></br>
-                        <input className='text-xl my-2 px-2 ' placeholder='부제'></input>
-                        <textarea className='w-full mt-10 h-4/5 p-2' placeholder='컨텐츠에 대한 상세한 소개내용을 적어주세요.'/>
+                        <input name= 'subtitle' className='text-xl my-2 px-2 ' placeholder='부제' onChange={handleChange}></input>
+                        <textarea name='desc' 
+                        className='w-full mt-10 h-4/5 p-2' placeholder='컨텐츠에 대한 상세한 소개내용을 적어주세요.' onChange={handleChange}/>
                     </div>
                 </div>
-                
+
                 <div className='flex border-t-2 my-3 py-2'>
                     <button type="submit" className='ml-auto shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black '>저장</button>                        
                     <button className='ml-5 shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black'>다음</button>                        
                 </div>
             </form>
 
-{/* 컷~~~ */}
-                <h2 className='font-bold text-2xl py-3 border-b-[2px]'>컨텐츠 소개</h2>
-                <div className='flex py-10 justify-center'>
-                    <div className='mr-10 w-[30vw]'>
-                        <div className='flex border items-center relative justify-between flex-auto' style={{ width: "30vw", height: "30vw" }} >
+            <h2 className='font-bold text-2xl py-3 border-b-[2px] mb-5'>컨텐츠 소개</h2>
+                <div className='flex justify-center'>
+                    {/* Images */}
+                    <div className='mr-10'>
+                        <div className='flex border items-center relative justify-between flex-auto' style={{ width: "30rem", height: "30rem" }} >
                             <button className='absolute right-px top-px'><AiOutlineClose /></button>
                             <AiOutlineLeft onClick={() => { setImgNum((imgNum - 1) % 4) }} />
                             <img></img>
@@ -75,20 +79,29 @@ export default function EditContentInfoPage() {
                         </div>
                         <div className='flex mt-3'>
                             {imglist.map((img, idx) => (
-                                <div className='border w-[6vw] h-[6vw]' onClick={() => { setImgNum(idx) }} style={{ width: "6vw", height: "6vw" }}> {img} </div>
+                                <div className='border w-[6rem] h-[6rem]' onClick={() => { setImgNum(idx) }}> {img} </div>
                             ))}
                         </div>
                     </div>
+                    
+                    {/* INPUT */}
                     <div className='ml-5 w-[50vw]'>
-                        <h1 className='font-bold text-3xl'>Title</h1>
-                        <h2 className='text-xl mt-2'>부제</h2>
-                        <p className='w-full border-t-2'>프로젝트 상세 설명</p>
+                        <h3 className='font-bold text-3xl px-2'>{contentData['title']}</h3>
+                        <br></br>
+                        <h2 className='text-xl my-2 px-2 '>{contentData['subtitle']}</h2>
+                        <p className='w-full mt-10 h-4/5 p-2'>{contentData['desc']}</p>
                     </div>
                 </div>
+
+                <div className='flex border-t-2 my-3 py-2'>
+                    <button type="submit" className='ml-auto shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black '>저장</button>                        
+                    <button className='ml-5 shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black'>다음</button>                        
+                </div>
+                
                 <div>
                     <h2 className='font-bold text-2xl py-3 border-b-[2px]'>팀 소개</h2>
                     <div className=''>
-                        
+                        <ProfileCard />
                     </div>
                 </div>
 
@@ -98,7 +111,7 @@ export default function EditContentInfoPage() {
                     <label for="team_name" >팀명</label>
                     <input type="text" onChange={handleChange} id='team_name' name='team_name' />
                     <label for="short_description">프로젝트 한 줄 설명</label>
-                    <input type="text" id='short_description' onChange={handleChange} name='short_description' placeholder='ex) ' />
+                    <input type="text" id='short_descripti6on' onChange={handleChange} name='short_description' placeholder='ex) ' />
                     <label for="category">컨텐츠 분야</label>
                     <select id="category" onChange={handleChange}>
                         <option>웹드라마</option>

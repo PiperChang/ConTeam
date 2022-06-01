@@ -4,7 +4,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useNavigate } from "react-router-dom";
 import parse, { domToReact } from 'html-react-parser'
-import './EditTeamInfoPage.css'
+import './EditTeamInfoPage.module.css'
 
 export default function EditTeamInfoPage() {
   const navigate = useNavigate()

@@ -19,5 +19,3 @@ export default function TeamListPage() {
     </div>
   );
 }
-
-// db에 저장이 안되니깐, 

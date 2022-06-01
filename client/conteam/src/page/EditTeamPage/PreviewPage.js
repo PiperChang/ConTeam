@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../../component/header/Header'
 import {useLocation} from 'react-router-dom' 
 import parse, { domToReact } from 'html-react-parser'
-import './EditTeamInfoPage.css'
+import './EditTeamInfoPage.module.css'
 
 export default function PreviewPage() {
   const location = useLocation()
