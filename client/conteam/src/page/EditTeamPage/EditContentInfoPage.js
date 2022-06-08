@@ -1,33 +1,70 @@
-import React, { useState,useRef} from 'react'
+import React, { useState, useRef } from 'react'
 import Header from '../../component/header/Header'
 import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from 'react-icons/ai'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react'
-import ProfileCard from '../RecruitPage/ProfileCard';
+import ProfileCard from '../../component/profileCard/ProfileCard';
+
+function EditTeamMembers() {
+    const [searchKeyword, setSearchKeyword] = useState('')
+    const inputRef = useRef(null)
+    const searchTeamMember = () => {
+        // API 넣을 것
+    }
+    let data = [{ name: '김건희', email:"김건희@naver.com" }, { name: '김창희', email:"김창희@naver.com" }, { name: '박준호',email:"박준호@daum.com" }, { name: '황민혁',email:"황민혁@naver.com" }]
+    const filteredProfiles = (data) => {
+        data = data.filter((p) => {
+            return p.email.indexOf(searchKeyword) > -1 || p.name.indexOf(searchKeyword) > -1;
+        })
+        return data.map((p) => {
+            return <li>{p.name} <small className='text-sm text-gray-600'>{p.email}</small></li>
+        })
+    }
+
+    return (
+        <div>
+            <h2 className='font-bold text-2xl py-3 border-b-[2px]'>팀 소개</h2>
+            <div className='flex  py-3 '>
+                <div className='w-1/4'>
+                    <input className='p-2 w-full min-w-m in border rounded-lg' placeholder='팀원의 이메일을 검색하세요' onChange={(e) => setSearchKeyword(e.target.value)} ref={inputRef} />
+                    <ul id='rel_keywords' className='' display={inputRef ? 'visible' : 'none'}>
+                        {filteredProfiles(data)}
+                    </ul>
+                </div>
+                <div className='TeamMembers '>
+                    <ProfileCard />
+                </div>
+
+            </div>
+        </div>
+    )
+}
+// 팀원 검색을 해야 함. 해서, 추가되면, ProfileCard 불러오기
+
 export default function EditContentInfoPage() {
     // imgList api로 가져와야함.
     const imglist = [1, 2, 3, 4, 5]
     const [imgNum, setImgNum] = useState(0)
     const editorRef = useRef();
-    
+
     const handleDeletePic = () => {
         imglist.splice(imgNum, 1)
     }
 
     const [contentData, setContentData] = useState({
-        title:'',
-        subtitle:"",
-        desc:"",
-        imgs:[]
+        title: '',
+        subtitle: "",
+        desc: "",
+        imgs: []
     })
-    
+
     const handleChange = (e) => {
         const newContentData = contentData
         newContentData[e.target.name] = e.target.value
         setContentData(contentData)
     }
-    
-    const saveContentData =(e) =>{
+
+    const saveContentData = (e) => {
         // axios.~ 보내기
     }
     return (
@@ -35,6 +72,38 @@ export default function EditContentInfoPage() {
             <Header />
             <div className='max-w-7xl min-w-0 w-[80vw] m-auto '>
                 <form onSubmit={saveContentData}>
+                    <h2 className='font-bold text-2xl py-3 border-b-[2px] mb-5'>컨텐츠 소개</h2>
+                    <div className='flex justify-center'>
+                        {/* Images */}
+                        <div className='mr-10'>
+                            <div className='flex border items-center relative justify-between flex-auto' style={{ width: "30rem", height: "30rem" }} >
+                                <button className='absolute right-px top-px'><AiOutlineClose /></button>
+                                <AiOutlineLeft onClick={() => { setImgNum((imgNum - 1) % 4) }} />
+                                <img></img>
+                                <AiOutlineRight onClick={() => { setImgNum((imgNum + 1) % 4) }} />
+                            </div>
+                            <div className='flex mt-3'>
+                                {imglist.map((img, idx) => (
+                                    <div className='border w-[6rem] h-[6rem]' onClick={() => { setImgNum(idx) }}> {img} </div>
+                                ))}
+                            </div>
+                        </div>
+                        {/* INPUT */}
+                        <div className='ml-5 w-[50vw]'>
+                            <input name='title' className='font-bold text-3xl px-2' placeholder='Title' onChange={handleChange}></input>
+                            <br></br>
+                            <input name='subtitle' className='text-xl my-2 px-2 ' placeholder='부제' onChange={handleChange}></input>
+                            <textarea name='desc'
+                                className='w-full mt-10 h-4/5 p-2' placeholder='컨텐츠에 대한 상세한 소개내용을 적어주세요.' onChange={handleChange} />
+                        </div>
+                    </div>
+
+                    <div className='flex border-t-2 my-3 py-2'>
+                        <button type="submit" className='ml-auto shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black '>저장</button>
+                        <button className='ml-5 shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black'>다음</button>
+                    </div>
+                </form>
+
                 <h2 className='font-bold text-2xl py-3 border-b-[2px] mb-5'>컨텐츠 소개</h2>
                 <div className='flex justify-center'>
                     {/* Images */}
@@ -51,39 +120,7 @@ export default function EditContentInfoPage() {
                             ))}
                         </div>
                     </div>
-                    {/* INPUT */}
-                    <div className='ml-5 w-[50vw]'>
-                        <input name= 'title' className='font-bold text-3xl px-2' placeholder='Title' onChange={handleChange}></input>
-                        <br></br>
-                        <input name= 'subtitle' className='text-xl my-2 px-2 ' placeholder='부제' onChange={handleChange}></input>
-                        <textarea name='desc' 
-                        className='w-full mt-10 h-4/5 p-2' placeholder='컨텐츠에 대한 상세한 소개내용을 적어주세요.' onChange={handleChange}/>
-                    </div>
-                </div>
 
-                <div className='flex border-t-2 my-3 py-2'>
-                    <button type="submit" className='ml-auto shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black '>저장</button>                        
-                    <button className='ml-5 shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black'>다음</button>                        
-                </div>
-            </form>
-
-            <h2 className='font-bold text-2xl py-3 border-b-[2px] mb-5'>컨텐츠 소개</h2>
-                <div className='flex justify-center'>
-                    {/* Images */}
-                    <div className='mr-10'>
-                        <div className='flex border items-center relative justify-between flex-auto' style={{ width: "30rem", height: "30rem" }} >
-                            <button className='absolute right-px top-px'><AiOutlineClose /></button>
-                            <AiOutlineLeft onClick={() => { setImgNum((imgNum - 1) % 4) }} />
-                            <img></img>
-                            <AiOutlineRight onClick={() => { setImgNum((imgNum + 1) % 4) }} />
-                        </div>
-                        <div className='flex mt-3'>
-                            {imglist.map((img, idx) => (
-                                <div className='border w-[6rem] h-[6rem]' onClick={() => { setImgNum(idx) }}> {img} </div>
-                            ))}
-                        </div>
-                    </div>
-                    
                     {/* INPUT */}
                     <div className='ml-5 w-[50vw]'>
                         <h3 className='font-bold text-3xl px-2'>{contentData['title']}</h3>
@@ -94,16 +131,11 @@ export default function EditContentInfoPage() {
                 </div>
 
                 <div className='flex border-t-2 my-3 py-2'>
-                    <button type="submit" className='ml-auto shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black '>저장</button>                        
-                    <button className='ml-5 shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black'>다음</button>                        
+                    <button type="submit" className='ml-auto shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black '>저장</button>
+                    <button className='ml-5 shadow rounded-full p-5 text-orange-500 hover:bg-orange-300 font-bold hover:text-black'>다음</button>
                 </div>
-                
-                <div>
-                    <h2 className='font-bold text-2xl py-3 border-b-[2px]'>팀 소개</h2>
-                    <div className=''>
-                        <ProfileCard />
-                    </div>
-                </div>
+                <EditTeamMembers />
+
 
                 {/* <form className='block team-edit-form p-7 shadow-md' action='/' method='get' onSubmit={handleSaveTeamData}>
                     <h3 className='font-semibold text-lg py-3'>1. 팀 소개</h3>

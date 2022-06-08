@@ -2,11 +2,12 @@ import React from 'react'
 import { BiTime, BiPencil } from 'react-icons/bi'
 import { BsPencil } from 'react-icons/bs'
 import { RiRoadMapLine } from 'react-icons/ri'
+
 export default function ProfileCard({ index, boxRef, name}) {
     return (
         <li
             key={index}
-            className="bg-white border-neutral drop-shadow h-80 m-6 mx-2 rounded-lg mb-5 w-64 "
+            className="bg-white border-neutral list-none  drop-shadow h-80 m-6 mx-2 rounded-lg mb-5 w-64 "
             ref={boxRef}
         >
             <div className='h-3/5 overflow-hidden rounded-t-lg'>
@@ -16,7 +17,7 @@ export default function ProfileCard({ index, boxRef, name}) {
             <div className="p-3 px-4">
                 <div className="flex mb-1 items-center">
                     <p className="mr-2 font-semibold text-lg">이주빈</p>
-                    <div className="bg-gray-300 rounded-full px-1.5 text-sm p-0 m-0 flex items-center h-6">
+                    <div className="bg-gray-300 rounded-full px-1.5  text-sm p-0 m-0 flex items-center h-6">
                         {/* 역할 => 아이콘 변화 */}
                         <BiPencil className='text-red-500 mr-1' />
                         <p>기획자</p>
