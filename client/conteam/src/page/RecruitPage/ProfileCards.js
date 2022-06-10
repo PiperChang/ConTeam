@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import {BiTime} from 'react-icons/bi'
-import ProfileCard from "./ProfileCard";
+import ProfileCard from "../../component/profileCard/ProfileCard";
 
 //media query 설정하기
 
