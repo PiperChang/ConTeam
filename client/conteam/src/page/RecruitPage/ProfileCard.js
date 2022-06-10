@@ -2,6 +2,7 @@ import React from 'react'
 import { BiTime, BiPencil } from 'react-icons/bi'
 import { BsPencil } from 'react-icons/bs'
 import { RiRoadMapLine } from 'react-icons/ri'
+
 export default function ProfileCard({ index, boxRef, name}) {
     return (
         <li
